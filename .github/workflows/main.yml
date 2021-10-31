@@ -1,0 +1,33 @@
+name: Deployment
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+   
+      - name: Secret Injection
+        run: |
+          cat <<EOF > .env.docker
+          NGINX_PROXY_MANAGER_MYSQL_ROOT_PASSWORD="${{ secrets.NGINX_PROXY_MANAGER_MYSQL_ROOT_PASSWORD }}"
+          NGINX_PROXY_MANAGER_MYSQL_DB="${{ secrets.NGINX_PROXY_MANAGER_MYSQL_DB }}"
+          NGINX_PROXY_MANAGER_MYSQL_PORT="${{ secrets.NGINX_PROXY_MANAGER_MYSQL_PORT }}"
+          NGINX_PROXY_MANAGER_MYSQL_USERNAME="${{ secrets.NGINX_PROXY_MANAGER_MYSQL_USERNAME }}"
+          NGINX_PROXY_MANAGER_MYSQL_PASSWORD="${{ secrets.NGINX_PROXY_MANAGER_MYSQL_PASSWORD }}"
+          MONGO_ROOT_USERNAME="${{ secrets.MONGO_ROOT_USERNAME }}"
+          MONGO_ROOT_PASSWORD="${{ secrets.MONGO_ROOT_PASSWORD }}"
+          EOF
+          cat <<EOF > api/.env
+          MONGODB_URI=mongodb://${{ secrets.MONGO_ROOT_USERNAME }}:${{ secrets.MONGO_ROOT_PASSWORD }}@database:27017/
+          PORT=8000
+          EOF
+          cat <<EOF > dashboard/.env
+          REACT_APP_BACKEND_HOST="${{ secrets.REACT_APP_BACKEND_HOST }}"
+          EOF
+
+      - name: Build and deploy application
+        run: docker-compose -f production-docker-compose.yaml --env-file=.env.docker up --build -d
