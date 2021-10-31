@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  
+  frontend:
+    build: dashboard/.
+    hostname: frontend
+    container_name: frontend
+    restart: always
+    depends_on:
+      - backend
+      - mongodb
+    ports:
+      - 127.0.0.1:3000:3000
+
+  backend:
+    build: api/.
+    hostname: backend
+    container_name: backend
+    restart: always
+    depends_on:
+      - mongodb
+    ports:
+      - 127.0.0.1:8000:8000
+
+  mongodb:
+    image: mongo
+    hostname: database
+    container_name: database
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "${MONGO_ROOT_USERNAME}" 
+      MONGO_INITDB_ROOT_PASSWORD: "${MONGO_ROOT_PASSWORD}"
+    volumes:
+      - mongodb:/data/db
+
+  website:
+    image: nginx
+    hostname: website
+    container_name: website 
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - ./website:/usr/share/nginx/html/
+
+volumes:
+  mongodb:

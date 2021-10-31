@@ -1,0 +1,15 @@
+# Dependencies
+node_modules
+
+# OSX
+*.DS_Store
+
+# Error logs
+yarn-error.log
+logs/server.log
+
+# Environment varibales
+dist
+
+# Code coverage
+coverage
