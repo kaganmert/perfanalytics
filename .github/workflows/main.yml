@@ -22,7 +22,7 @@ jobs:
           MONGO_ROOT_PASSWORD="${{ secrets.MONGO_ROOT_PASSWORD }}"
           EOF
           cat <<EOF > api/.env
-          MONGODB_URI=mongodb://${{ secrets.MONGO_ROOT_USERNAME }}:${{ secrets.MONGO_ROOT_PASSWORD }}@database:27017/
+          MONGODB_URI=mongodb://${{ secrets.MONGO_ROOT_USERNAME }}:"${{ secrets.MONGO_ROOT_PASSWORD }}"@database:27017/
           PORT=8000
           EOF
           cat <<EOF > dashboard/.env
