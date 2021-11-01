@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "watch-tsc": "tsc -w",
-    "watch-deploy": "nodemon dist/server.js",
     "start": "node dist/server.js",
     "dev": "nodemon server.ts",
     "test": "jest --runInBand --forceExit",

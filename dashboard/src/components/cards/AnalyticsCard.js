@@ -6,7 +6,7 @@ import { tailwindConfig, hexToRGB } from "../../utils/Utils";
 export default function AnalyticsCard(props) {
   const averageValue = (
     props.res.reduce((a, b) => a + b, 0) / props.res.length
-  ).toFixed(5);
+  ).toFixed(3);
   const chartData = {
     labels: props.timeStamp,
     datasets: [
@@ -44,12 +44,15 @@ export default function AnalyticsCard(props) {
         ></div>
         <div className="ml-4">
           <div className="flex items-center">
-            <div className="text-3xl font-bold text-gray-800 mr-2">
-              {averageValue}
+            <div className="text-xl font-bold text-gray-800 mr-2">
+              Latest {props.res[props.res.length - 1].toFixed(3)}
             </div>
             <MarkInfo markType={props.chartType} />
           </div>
-          <div className="text-sm text-gray-500">Average Value</div>
+          <div className="text-sm font-bold text-gray-500">
+            Update {props.timeStamp[props.timeStamp.length - 1]}
+          </div>
+          <div className="text-sm text-gray-500">Avg. {averageValue}</div>
         </div>
       </header>
 

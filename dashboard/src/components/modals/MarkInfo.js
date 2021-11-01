@@ -1,6 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+
 export const MarkInfo = (props) => {
   let [isOpen, setIsOpen] = useState(false);
   function closeModal() {
@@ -130,9 +130,9 @@ const TTFBDetails = () => {
         enough so that the 75th percentile of users experience an FCP within the
         "good" threshold.
       </p>
-      <Link to={{ pathname: "https://web.dev/ttfb/" }}>
+      <a href="https://web.dev/ttfb/">
         <p className="font-bold text-blue-800 mt-2">Resource: web.dev</p>
-      </Link>
+      </a>
     </div>
   );
 };
@@ -156,9 +156,9 @@ const FCPDetails = () => {
         target for most of your users, a good threshold to measure is the 75th
         percentile of page loads, segmented across mobile and desktop devices.
       </p>
-      <Link to={{ pathname: "https://web.dev/fcp/" }}>
+      <a href="https://web.dev/fcp/">
         <p className="font-bold text-blue-800 mt-2">Resource: web.dev</p>
-      </Link>
+      </a>
     </div>
   );
 };
@@ -180,14 +180,9 @@ const DomLoadDetails = () => {
         and loads images after the server or content delivery system (CDN)
         finishes, page load timing cannot capture the image load time.
       </p>
-      <Link
-        to={{
-          pathname:
-            "https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/page-load-timing-process/#h3-dom",
-        }}
-      >
+      <a href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/page-load-timing-process/#h3-dom">
         <p className="font-bold text-blue-800 mt-2">Resource: New Relic</p>
-      </Link>
+      </a>
     </div>
   );
 };
@@ -202,14 +197,9 @@ const WindowLoadDetails = () => {
         loaded, without waiting for resources to finish loading.{" "}
       </p>
 
-      <Link
-        to={{
-          pathname:
-            "https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event",
-        }}
-      >
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event">
         <p className="font-bold text-blue-800 mt-2">Resource: MDN Web Docs</p>
-      </Link>
+      </a>
     </div>
   );
 };

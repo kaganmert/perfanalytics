@@ -1,8 +1,6 @@
 (() => {
-  // src/index.js
   var URL = window.location.href;
   var Timestamp = new Date();
-  //Timestamp.setHours(3); // UTC+3 - Istanbul
   var API_URL = "http://localhost:8000/api/v1/metrics";
   var sendRequest = (TTFB, DomLoad, WindowLoad, Files) => {
     const request = setInterval(() => {
@@ -19,9 +17,7 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
-      })
-        .then(() => console.log("Successfully saved metrics."))
-        .catch((err) => console.error(err));
+      }).catch((err) => console.error(err));
       clearInterval(request);
     }, 500);
   };
