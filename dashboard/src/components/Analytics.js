@@ -58,6 +58,23 @@ function Analytics() {
                 <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
                   <div>
                     <p className="font-semibold text-gray-800 ">
+                      React Profiler Duration
+                    </p>
+                    <p>
+                      Actual:
+                      {localStorage.getItem("Duration").substring(0, 5)}ms
+                    </p>
+                    <p>
+                      Base:
+                      {localStorage.getItem("Time").substring(0, 5)}ms
+                    </p>
+                  </div>
+                  <div
+                    className="hidden md:block w-px h-24 bg-gray-600 ml-8 mr-8"
+                    aria-hidden="true"
+                  ></div>
+                  <div>
+                    <p className="font-semibold text-gray-800 ">
                       Polling interval
                     </p>
                     <select

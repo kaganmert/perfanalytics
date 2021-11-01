@@ -14,12 +14,14 @@ function App() {
     startTime,
     commitTime
   ) => {
-    console.log(`${id}'s ${phase} phase:`);
-    console.log(`Actual time: ${actualTime}`);
-    console.log(`Actual time: ${actualDuration}`);
-    console.log(`Base time: ${baseTime}`);
-    console.log(`Start time: ${startTime}`);
-    console.log(`Commit time: ${commitTime}`);
+    // console.log(`${id}'s ${phase} phase:`);
+    localStorage.setItem("Time", actualTime);
+    // console.log(`Actual time: ${actualTime}`);
+    localStorage.setItem("Duration", actualDuration);
+    // console.log(`Actual time: ${actualDuration}`);
+    // console.log(`Base time: ${baseTime}`);
+    // console.log(`Start time: ${startTime}`);
+    // console.log(`Commit time: ${commitTime}`);
   };
   return (
     <>
