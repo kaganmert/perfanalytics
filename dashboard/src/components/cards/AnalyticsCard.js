@@ -1,5 +1,6 @@
 import React from "react";
 import LineChart from "../charts/LineChart";
+import { MarkInfo } from "../modals/MarkInfo";
 import { tailwindConfig, hexToRGB } from "../../utils/Utils";
 
 export default function AnalyticsCard(props) {
@@ -34,7 +35,9 @@ export default function AnalyticsCard(props) {
         >
           <div className="absolute w-1.5 h-1.5 rounded-full bg-red-500"></div>
         </div>
-        <h2 className="font-semibold text-gray-800 mr-2">{props.chartType}</h2>
+        <h2 className="font-semibold text-gray-800 mr-2">
+          {props.chartType} Chart
+        </h2>
         <div
           className="hidden md:block w-px h-8 bg-gray-200 ml-3"
           aria-hidden="true"
@@ -44,7 +47,7 @@ export default function AnalyticsCard(props) {
             <div className="text-3xl font-bold text-gray-800 mr-2">
               {averageValue}
             </div>
-            {averageValue < 0.015 ? <GoodValueTag /> : <BadValueTag />}
+            <MarkInfo markType={props.chartType} />
           </div>
           <div className="text-sm text-gray-500">Average Value</div>
         </div>
@@ -57,49 +60,3 @@ export default function AnalyticsCard(props) {
     </div>
   );
 }
-
-const GoodValueTag = () => {
-  return (
-    <div>
-      <div className="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-200 text-green-700 rounded-full">
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 13l4 4L19 7"
-          />
-        </svg>
-      </div>
-    </div>
-  );
-};
-
-const BadValueTag = () => {
-  return (
-    <div>
-      <div className="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-red-200 text-red-700 rounded-full">
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </div>
-    </div>
-  );
-};

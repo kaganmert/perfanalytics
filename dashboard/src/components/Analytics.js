@@ -34,22 +34,22 @@ function Analytics() {
               </div>
               <div className="grid grid-cols-12 gap-6">
                 <AnalyticsCard
-                  chartType="TTFB Chart"
+                  chartType="TTFB"
                   res={dataTTFB}
                   timeStamp={timeStamp}
                 />
                 <AnalyticsCard
-                  chartType="FCP Chart"
+                  chartType="FCP"
                   res={dataFCP}
                   timeStamp={timeStamp}
                 />
                 <AnalyticsCard
-                  chartType="DOM Load Chart"
+                  chartType="DOMLoad"
                   res={dataDomLoad}
                   timeStamp={timeStamp}
                 />
                 <AnalyticsCard
-                  chartType="Window Load Chart"
+                  chartType="WindowLoad"
                   res={dataWindowLoad}
                   timeStamp={timeStamp}
                 />
