@@ -62,11 +62,11 @@ function Analytics() {
                     </p>
                     <p>
                       Actual:
-                      {localStorage.getItem("Duration").substring(0, 5)}ms
+                      {localStorage.getItem("Duration").substring(0, 5)}
                     </p>
                     <p>
                       Base:
-                      {localStorage.getItem("Time").substring(0, 5)}ms
+                      {localStorage.getItem("Time").substring(0, 5)}
                     </p>
                   </div>
                   <div
