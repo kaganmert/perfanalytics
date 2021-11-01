@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "TAILWIND_MODE=watch craco start",
-    "build": "craco build -- --profile",
+    "build": "craco build",
     "test": "craco test",
     "eject": "craco eject"
   },
